@@ -9,8 +9,6 @@
 // year: The year the book was published (int)
 // After converting the JSON strings to Book objects, print out the title and author of each book.
 
-// What you need to do:
-
 // Create a list of JSON strings, where each string represents a book with the title, author, and year information.
 // Use the .map() method to convert each JSON string into a Book object.
 // Print the title and author of each book in the list.
@@ -43,6 +41,27 @@ void main() {
     print(
         "Title : ${objects.title}, Author : ${objects.author}, Year : ${objects.year}");
   }
+
+  List<Person> peoples = [
+    Person(name: 'Rafay', weight: 83),
+    Person(name: 'Talal', weight: 78),
+    Person(name: 'Wardah', weight: 55),
+  ];
+
+  var peopleNames = peoples.map((names) {
+    print("Names : ${names.name}");
+  });
+
+  print(peopleNames);
+
+  List<String> peopleMaps = [
+    '{"name": "Rafay", "weight": 83}',
+    '{ "name": "Talal", "weight": 78}',
+  ];
+
+  for (var obj in peopleMaps) {
+    print("Name : ${obj}");
+  }
 }
 
 class Book {
@@ -54,5 +73,15 @@ class Book {
     required this.title,
     required this.author,
     required this.year,
+  });
+}
+
+class Person {
+  final String name;
+  final int weight;
+
+  Person({
+    required this.name,
+    required this.weight,
   });
 }

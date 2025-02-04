@@ -3,8 +3,6 @@ import 'package:newsweather_app/Themes/darkMode.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:newsweather_app/firebase_options.dart';
 import 'package:newsweather_app/signIn.dart';
-import 'package:newsweather_app/splashScreen.dart';
-import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
