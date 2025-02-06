@@ -45,11 +45,8 @@ class _SignupState extends State<Signup> {
     await prefs.setBool('isLoggedIn', true);
   }
 
-
-  Future <void> resetPassword() async {
-
-      // User user = user.zZz
-
+  Future<void> resetPassword() async {
+    // User user = user.zZz
   }
 
   Future<void> signUp() async {
@@ -154,6 +151,7 @@ class _SignupState extends State<Signup> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           'Sign Up',
           style: TextStyle(

@@ -17,35 +17,6 @@ class SignInScreen extends StatelessWidget {
         "605410622339-ios-0763b00fae4e2b0e7c54b6.apps.googleusercontent.com", // iOS Client ID
   );
 
-  // Google Sign-In Method
-  // Future<User?> signInWithGoogle() async {
-  //   try {
-  //     final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-  //     if (googleUser == null) return null; // User canceled sign-in
-
-  //     final GoogleSignInAuthentication googleAuth =
-  //         await googleUser.authentication;
-
-  //     final OAuthCredential credential = GoogleAuthProvider.credential(
-  //       accessToken: googleAuth.accessToken,
-  //       idToken: googleAuth.idToken,
-  //     );
-
-  //     UserCredential userCredential =
-  //         await _auth.signInWithCredential(credential);
-
-  //     return userCredential.user;
-  //   } catch (e) {
-  //     print("Error signing in with Google: $e");
-  //     return null;
-  //   }
-  // }
-
-  Future<void> resetPassword() async {
-    // Add your reset password logic here
-  }
-
-  // Sign-Out Method
   Future<void> signOut() async {
     await _googleSignIn.signOut();
     await _auth.signOut();
@@ -54,7 +25,15 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Sign In')),
+      appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: Text(
+            'Sign In',
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 25,
+            ),
+          )),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -63,26 +42,50 @@ class SignInScreen extends StatelessWidget {
             // Email TextField
             TextField(
               controller: _emailController,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.inversePrimary,
+              ),
+              cursorColor: Theme.of(context).colorScheme.inversePrimary,
               decoration: InputDecoration(
                 labelText: 'Email',
+                floatingLabelStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                ),
                 border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                ), // Change colo
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 10.0),
             // Password TextField
             TextField(
               controller: _passwordController,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.inversePrimary,
+              ),
               obscureText: true,
+              cursorColor: Theme.of(context).colorScheme.inversePrimary,
               decoration: InputDecoration(
                 labelText: 'Password',
+                floatingLabelStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                ),
                 border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                ), // Change colo
               ),
             ),
             SizedBox(height: 20),
             // Sign In Button (Email/Password)
             ElevatedButton(
               style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
+                  backgroundColor: WidgetStateProperty.all(
                       Theme.of(context).colorScheme.secondary)),
               onPressed: () async {
                 try {

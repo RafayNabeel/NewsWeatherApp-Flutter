@@ -77,36 +77,22 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
   Future<void> writeBookmarkedArticles(Newsarticle article) async {
     final SharedPreferences preferences = await SharedPreferences.getInstance();
-
-    // Retrieve the current bookmarks list from SharedPreferences
     List<String> storedBookmarks = preferences.getStringList('bookmarks') ?? [];
 
-    // Map the stored bookmarks to Newsarticle objects
-    List<Newsarticle> bookmarkedObjects = storedBookmarks.map((jsonString) {
-      var bookmarks = jsonDecode(jsonString);
-      return Newsarticle(
-        id: '',
-        name: '',
-        author: '',
-        title: bookmarks['title'],
-        description: '',
-        url: bookmarks['url'],
-        urlToImage: bookmarks['urlToImage'],
-        publishedAt: '',
-        content: '',
-      );
-    }).toList();
+    // Prevent duplicate bookmarks
+    bool alreadyBookmarked = storedBookmarks.any((jsonString) {
+      var existingArticle = jsonDecode(jsonString);
+      return existingArticle['title'] == article.title &&
+          existingArticle['url'] == article.url;
+    });
 
-    // Add the new article to the list of bookmarks
-    bookmarkedObjects.add(article);
-
-    // Convert the updated list of Newsarticle objects back to JSON strings
-    List<String> bookmarkedJsonStrings = bookmarkedObjects.map((article) {
-      return jsonEncode(article.toJson());
-    }).toList();
-
-    // Save the updated bookmarks list back to SharedPreferences
-    await preferences.setStringList('bookmarks', bookmarkedJsonStrings);
+    if (!alreadyBookmarked) {
+      storedBookmarks.add(jsonEncode(article.toJson()));
+      await preferences.setStringList('bookmarks', storedBookmarks);
+      print("Bookmarked: ${article.title}");
+    } else {
+      print("Already Bookmarked: ${article.title}");
+    }
   }
 
   // we want to store
@@ -132,31 +118,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
   final String publishedAt = '';
   final String content = '';
   bool bookmark = false;
-
-  // Future<void> writeBookmarkList(
-  //     String b_id,
-  //     String b_name,
-  //     String b_author,
-  //     String b_title,
-  //     String b_desc,
-  //     String b_publish,
-  //     String b_url,
-  //     String b_urlToImage,
-  //     String b_content,
-  //     bool b_bookmarks) async {
-  //   SharedPreferences preferences = await SharedPreferences.getInstance();
-
-  //   await preferences.setString(id, b_id);
-  //   await preferences.setString(name, b_name);
-  //   await preferences.setString(author, b_author);
-  //   await preferences.setString(title, b_title);
-  //   await preferences.setString(description, b_desc);
-  //   await preferences.setString(url, b_url);
-  //   await preferences.setString(urlToImage, b_urlToImage);
-  //   await preferences.setString(publishedAt, b_publish);
-  //   await preferences.setString(content, b_content);
-  //   await preferences.setBool('bookmark', b_bookmarks);
-  // }
 
   Future<void> displayArticles(String category) async {
     String url = '';

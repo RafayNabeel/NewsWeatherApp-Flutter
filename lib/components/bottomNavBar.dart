@@ -56,7 +56,7 @@ class BottomNavBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.book_online,
+            Icons.bookmark,
             size: 35,
             color: Theme.of(context).colorScheme.inversePrimary,
           ),

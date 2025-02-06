@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:newsweather_app/main.dart';
 
 // Future<void> main() async {
 //   WidgetsFlutterBinding.ensureInitialized();

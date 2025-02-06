@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:newsweather_app/signIn.dart';
-import 'package:newsweather_app/signUp.dart';
 
 class Forgetpassword extends StatefulWidget {
   Forgetpassword({super.key});

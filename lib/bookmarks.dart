@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newsweather_app/ContentPage.dart';
+import 'package:newsweather_app/components/bottomNavBar.dart';
 import 'dart:convert';
 import 'package:newsweather_app/models/newsArticle.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,8 +31,6 @@ class _BookmarksState extends State<Bookmarks> {
       bookmarkedArticles = loadedBookmarks;
     });
   }
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -109,6 +108,7 @@ class _BookmarksState extends State<Bookmarks> {
                 ],
               ),
             ),
+      bottomNavigationBar: BottomNavBar(currentIndex: 2),
     );
   }
 }

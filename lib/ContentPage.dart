@@ -126,7 +126,7 @@ class _ContentpageState extends State<Contentpage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.arrow_circle_down_rounded),
-            label: 'Back',
+            label: 'Save',
           ),
         ],
       ),

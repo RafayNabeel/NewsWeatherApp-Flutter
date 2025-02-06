@@ -23,7 +23,6 @@ class Newsarticle {
     this.bookmark = false,
   });
 
-  // Convert a JSON map to a Newsarticle object
   factory Newsarticle.fromJson(Map<String, dynamic> json) {
     return Newsarticle(
       id: json['id'] as String? ?? '', // Default to empty string if null

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newsweather_app/components/bottomNavBar.dart';
+import 'package:newsweather_app/forYouPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -69,7 +70,10 @@ class _ProfilePageState extends State<ProfilePage> {
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Foryoupage()),
+            );
           },
           icon: Icon(
             Icons.arrow_back_ios_new_sharp,

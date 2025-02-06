@@ -95,7 +95,7 @@ class Welcomepage extends StatelessWidget {
                             width: 200,
                             child: Center(
                               child: Text(
-                                "Explore ->",
+                                "Explore ",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
